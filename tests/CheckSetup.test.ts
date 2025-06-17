@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 import { SearchAndOpenPage, RandInt } from './bridge_functions';
 
 test.use({ 
-  storageState: 'playwright/.auth/ks_user.json',
   video: 'on'
 });
 
