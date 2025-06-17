@@ -12,7 +12,7 @@ test.use({
 test('Create new customer', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'description', description: 'Создание нового клиента и валидация полей.' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
   await SearchAndOpenPage(page, 'Customers');
   await page.screenshot({ path: 'screenshots/before_new_customer.png' });
@@ -54,7 +54,7 @@ test('Open Customers and check table', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'tag', description: 'sales' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Customers');
   await expect(page.frameLocator('iframe[title="undefined"]').getByTitle('Show info about Customers')
           ).toBeVisible({ timeout: 10000 });
@@ -70,7 +70,7 @@ test('Open Vendors and check table', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'tag', description: 'purchasing' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Vendors');
   await page.waitForTimeout(2000);
 
@@ -85,7 +85,7 @@ test('Open Items and check table', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'tag', description: 'Inventory' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Items');
   await expect(page.frameLocator('iframe[title="undefined"]').getByTitle('Show info about Items')
           ).toBeVisible({ timeout: 10000 });
@@ -101,7 +101,7 @@ test('Open Sales Orders and check table', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'tag', description: 'sales' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Sales Orders');
   await page.waitForTimeout(2000);
 
@@ -116,7 +116,7 @@ test('Open Purchase Orders and check table', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'tag', description: 'purchasing' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Purchase Orders');
   await page.waitForTimeout(2000);
 
@@ -131,7 +131,7 @@ test('Open Chart of Accounts and check table', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'tag', description: 'finance' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await page.waitForTimeout(2000);
 
   await page.screenshot({ path: 'screenshots/after_open_chart_of_accounts_page.png' });
@@ -145,7 +145,7 @@ test('Open Posted Sales Invoices and check table', async ({ page }, testInfo) =>
   testInfo.annotations.push({ type: 'tag', description: 'sales' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Posted Sales Invoices');
   await page.waitForTimeout(2000);
 
@@ -160,7 +160,7 @@ test('Open Posted Purchase Invoices and check table', async ({ page }, testInfo)
   testInfo.annotations.push({ type: 'tag', description: 'purchasing' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Posted Purchase Invoices');
   await page.waitForTimeout(2000);
 
@@ -175,7 +175,7 @@ test('Open Bank Accounts and check table', async ({ page }, testInfo) => {
   testInfo.annotations.push({ type: 'tag', description: 'finance' });
   testInfo.annotations.push({ type: 'tag', description: 'dev' });
 
-  await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
   await SearchAndOpenPage(page, 'Bank Accounts');
   await expect(page.frameLocator('iframe[title="undefined"]').getByTitle('Show info about Bank Accounts')
           ).toBeVisible({ timeout: 10000 });

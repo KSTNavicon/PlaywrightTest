@@ -2,7 +2,7 @@ import { randomInt } from "crypto";
 import { chromium } from 'playwright';
 
 export async function SearchAndOpenPage(page, searchText) {
-    await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
     await page.getByLabel('Search').click();
     await page.frameLocator('iframe[title="undefined"]').getByRole('textbox', { name: 'Tell me what you want to do' }).fill(searchText);
     await page.frameLocator('iframe[title="undefined"]').locator('[id^="GroupedListSection"]').getByText(searchText, { exact: true }).click();

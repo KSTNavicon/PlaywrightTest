@@ -12,7 +12,7 @@ test.use({
 test('Check Sales & Receivables Setup', async ({ page }, testInfo) => {
     testInfo.annotations.push({ type: 'description', description: 'Проверка настроек Sales & Receivables Setup' });
 
-    await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
     
     await SearchAndOpenPage(page, 'Sales & Receivables Setup');
     await page.waitForTimeout(5000);
@@ -37,7 +37,7 @@ test('Check Sales & Receivables Setup', async ({ page }, testInfo) => {
 test('Check Purchases & Payables Setup', async ({ page }, testInfo) => {
     testInfo.annotations.push({ type: 'description', description: 'Проверка настроек Purchases & Payables Setup' });
 
-    await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
     await SearchAndOpenPage(page, 'Purchases & Payables Setup');
     await page.waitForTimeout(5000);
@@ -59,7 +59,7 @@ test('Check Purchases & Payables Setup', async ({ page }, testInfo) => {
 test('Check Inventory Setup', async ({ page }, testInfo) => {
     testInfo.annotations.push({ type: 'description', description: 'Проверка настроек Inventory Setup' });
 
-    await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
     await SearchAndOpenPage(page, 'Inventory Setup');
     await page.waitForTimeout(10000);
@@ -78,7 +78,7 @@ test('Check Inventory Setup', async ({ page }, testInfo) => {
 test('Check Role Center', async ({ page }, testInfo) => {
     testInfo.annotations.push({ type: 'description', description: 'Проверка видимости Role Center' });
 
-    await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
     await page.waitForTimeout(50000);
 
     await page.screenshot({ path: 'screenshots/Role_Center.png' });
@@ -93,7 +93,7 @@ test('Check Role Center', async ({ page }, testInfo) => {
 test('Check Customer Agreements', async ({ page }, testInfo) => {
     testInfo.annotations.push({ type: 'description', description: 'Проверка видимости Customer Agreements' });
 
-    await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
     await SearchAndOpenPage(page, 'Customers');
     await page.waitForTimeout(10000);

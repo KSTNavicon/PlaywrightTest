@@ -4,7 +4,7 @@ import path from 'path';
 const authFile = path.join(__dirname, '../playwright/.auth/ks_user.json');
 
 // setup('ks_auth', async ({ page }) => {
-//     await page.goto('https://businesscentral.dynamics.com/5d10e9a3-bb44-42da-a961-59c531132b7e/Development/?company=Bridge%20Chemicals');
+//     await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
 //     await page.getByPlaceholder('Email or phone').click();
 //     await page.getByPlaceholder('Email or phone').fill('ks@bridgechemicals.com');
