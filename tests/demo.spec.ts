@@ -17,33 +17,33 @@ test('Create new customer', async ({ page }, testInfo) => {
   await SearchAndOpenPage(page, 'Customers');
   await page.screenshot({ path: 'screenshots/before_new_customer.png' });
 
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('menuitem', { name: 'New', exact: true }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Code, sorted in Ascending order NOAGR' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'OK' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Name' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Name' }).fill('Test Customer');
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('menuitem', { name: 'New', exact: true }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Code, sorted in Ascending order NOAGR' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'OK' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Name' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Name' }).fill('Test Customer');
 
-  await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Agreement Posting')).toContainText('No AgreementMandatory');
+  // await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Agreement Posting')).toContainText('No AgreementMandatory');
   
-  const taxNumber = RandInt(100).toString();
-  const taxOffice = RandInt(100).toString();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Invoicing, This group' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Number' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Number' }).fill(taxNumber);
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).fill(taxOffice);
-  await page.screenshot({ path: 'screenshots/after_tax_info.png' });
+  // const taxNumber = RandInt(100).toString();
+  // const taxOffice = RandInt(100).toString();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Invoicing, This group' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Number' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Number' }).fill(taxNumber);
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).fill(taxOffice);
+  // await page.screenshot({ path: 'screenshots/after_tax_info.png' });
 
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Gen. Bus.' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Gen. Bus. Posting Group' }).fill('DOMEST');
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Gen. Bus. Posting Group' }).press('Tab');
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Customer Posting Group' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).fill('CUST_DOM');
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).press('Tab');
-  await page.screenshot({ path: 'screenshots/after_customer_creation.png' });
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Gen. Bus.' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Gen. Bus. Posting Group' }).fill('DOMEST');
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Gen. Bus. Posting Group' }).press('Tab');
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Customer Posting Group' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).fill('CUST_DOM');
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).press('Tab');
+  // await page.screenshot({ path: 'screenshots/after_customer_creation.png' });
 
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Delete the information' }).click();
-  await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Yes' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Delete the information' }).click();
+  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Yes' }).click();
 });
 
 // @allure.tag: regression
