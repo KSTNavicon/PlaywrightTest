@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { SearchAndOpenPage, RandInt } from './bridge_functions';
+import { SearchAndOpenPage, RandInt, takeScreenshotAndAttach } from './bridge_functions';
 
 test.use({ 
   video: 'on'
@@ -14,7 +14,7 @@ test('Create new customer', async ({ page }, testInfo) => {
   await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
   await SearchAndOpenPage(page, 'Customers');
-  await page.screenshot({ path: 'screenshots/before_new_customer.png' });
+  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/before_new_customer.png');
 
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('menuitem', { name: 'New', exact: true }).click();
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Code, sorted in Ascending order NOAGR' }).click();
@@ -31,7 +31,8 @@ test('Create new customer', async ({ page }, testInfo) => {
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Number' }).fill(taxNumber);
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).click();
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).fill(taxOffice);
-  // await page.screenshot({ path: 'screenshots/after_tax_info.png' });
+
+  // await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_tax_info.png');
 
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Gen. Bus.' }).click();
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Gen. Bus. Posting Group' }).fill('DOMEST');
@@ -39,7 +40,7 @@ test('Create new customer', async ({ page }, testInfo) => {
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Customer Posting Group' }).click();
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).fill('CUST_DOM');
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).press('Tab');
-  // await page.screenshot({ path: 'screenshots/after_customer_creation.png' });
+  // await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_customer_creation.png');
 
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Delete the information' }).click();
   // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Yes' }).click();
@@ -58,7 +59,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await expect(page.frameLocator('iframe[title="undefined"]').getByTitle('Show info about Customers')
 //           ).toBeVisible({ timeout: 10000 });
 
-//   await page.screenshot({ path: 'screenshots/after_open_customers_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_customers_page.png');
 // });
 
 // // @allure.tag: regression
@@ -73,7 +74,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await SearchAndOpenPage(page, 'Vendors');
 //   await page.waitForTimeout(2000);
 
-//   await page.screenshot({ path: 'screenshots/after_open_vendors_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_vendors_page.png');
 // });
 
 // // @allure.tag: regression
@@ -89,7 +90,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await expect(page.frameLocator('iframe[title="undefined"]').getByTitle('Show info about Items')
 //           ).toBeVisible({ timeout: 10000 });
 
-//   await page.screenshot({ path: 'screenshots/after_open_items_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_items_page.png');
 // });
 
 // // @allure.tag: regression
@@ -104,7 +105,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await SearchAndOpenPage(page, 'Sales Orders');
 //   await page.waitForTimeout(2000);
 
-//   await page.screenshot({ path: 'screenshots/after_open_sales_orders_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_sales_orders_page.png');
 // });
 
 // // @allure.tag: regression
@@ -119,7 +120,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await SearchAndOpenPage(page, 'Purchase Orders');
 //   await page.waitForTimeout(2000);
 
-//   await page.screenshot({ path: 'screenshots/after_open_purchase_orders_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_purchase_orders_page.png');
 // });
 
 // // @allure.tag: regression
@@ -133,7 +134,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 //   await page.waitForTimeout(2000);
 
-//   await page.screenshot({ path: 'screenshots/after_open_chart_of_accounts_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_chart_of_accounts_page.png');
 // });
 
 // // @allure.tag: regression
@@ -148,7 +149,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await SearchAndOpenPage(page, 'Posted Sales Invoices');
 //   await page.waitForTimeout(2000);
 
-//   await page.screenshot({ path: 'screenshots/after_open_posted_sales_invoices_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_posted_sales_invoices_page.png');
 // });
 
 // // @allure.tag: regression
@@ -163,7 +164,7 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await SearchAndOpenPage(page, 'Posted Purchase Invoices');
 //   await page.waitForTimeout(2000);
 
-//   await page.screenshot({ path: 'screenshots/after_open_posted_purchase_invoices_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_posted_purchase_invoices_page.png');
 // });
 
 // // @allure.tag: regression
@@ -179,6 +180,6 @@ test('Create new customer', async ({ page }, testInfo) => {
 //   await expect(page.frameLocator('iframe[title="undefined"]').getByTitle('Show info about Bank Accounts')
 //           ).toBeVisible({ timeout: 10000 });
 
-//   await page.screenshot({ path: 'screenshots/after_open_bank_accounts_page.png' });
+//   await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_bank_accounts_page.png');
 // });
 

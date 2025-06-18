@@ -14,4 +14,9 @@ export function RandInt(range) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+export async function takeScreenshotAndAttach(page, testInfo, name, path) {
+    await page.screenshot({ path });
+    await testInfo.attach(name, { path, contentType: 'image/png' });
+}
+
   

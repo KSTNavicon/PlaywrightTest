@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { SearchAndOpenPage, RandInt } from './bridge_functions';
+import { SearchAndOpenPage, RandInt, takeScreenshotAndAttach } from './bridge_functions';
 
 test.use({ 
   video: 'on'
@@ -16,7 +16,7 @@ test('Check Sales & Receivables Setup', async ({ page }, testInfo) => {
     await SearchAndOpenPage(page, 'Sales & Receivables Setup');
     await page.waitForTimeout(2000);
 
-    await page.screenshot({ path: 'screenshots/Sales_Setup.png' });
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/Sales_Setup.png');
 
     await expect(await (await page.locator('iframe[title="undefined"]').contentFrame()).getByRole('checkbox', { name: 'Create Item from Description' })).not.toBeChecked();
 
@@ -40,7 +40,7 @@ test('Check Sales & Receivables Setup', async ({ page }, testInfo) => {
 //     await SearchAndOpenPage(page, 'Purchases & Payables Setup');
 //     await page.waitForTimeout(2000);
 
-//     await page.screenshot({ path: 'screenshots/Purchases_Setup.png' });
+//     await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/Purchases_Setup.png');
 
 //     await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'General, Show more' }).click();
 //     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Appln. between Currencies')).toContainText('None');
@@ -61,7 +61,7 @@ test('Check Sales & Receivables Setup', async ({ page }, testInfo) => {
 //     await SearchAndOpenPage(page, 'Inventory Setup');
 //     await page.waitForTimeout(10000);
 
-//     await page.screenshot({ path: 'screenshots/Purchases_Setup.png' });
+//     await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/Purchases_Setup.png');
 
 //     await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'General, Show more' }).click();
 //     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Automatic Cost Adjustment')).toContainText('Always');
