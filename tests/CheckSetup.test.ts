@@ -32,39 +32,39 @@ test('Check Sales & Receivables Setup', async ({ page }, testInfo) => {
 // // @allure.tag: regression
 // // @allure.tag: purchases
 // // @allure.tag: dev
-// test('Check Purchases & Payables Setup', async ({ page }, testInfo) => {
-//     testInfo.annotations.push({ type: 'description', description: 'Проверка настроек Purchases & Payables Setup' });
+test('Check Purchases & Payables Setup', async ({ page }, testInfo) => {
+    testInfo.annotations.push({ type: 'description', description: 'Проверка настроек Purchases & Payables Setup' });
 
-//     await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
-//     await SearchAndOpenPage(page, 'Purchases & Payables Setup');
-//     await page.waitForTimeout(2000);
+    await SearchAndOpenPage(page, 'Purchases & Payables Setup');
+    await page.waitForTimeout(2000);
 
-//     await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/Purchases_Setup.png');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/Purchases_Setup.png');
 
-//     await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'General, Show more' }).click();
-//     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Appln. between Currencies')).toContainText('None');
-//     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Default Posting Date')).toContainText('Work Date');
-//     await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Number Series" / "' }).click();
-//     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Invoice Nos.', exact: true })).toHaveValue('E-RG');
-//     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Posted Invoice Nos.' })).toHaveValue('E-RG+');
-// });
+    await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'General, Show more' }).click();
+    await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Appln. between Currencies')).toContainText('None');
+    await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Default Posting Date')).toContainText('Work Date');
+    await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Number Series" / "' }).click();
+    await expect(page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Invoice Nos.', exact: true })).toHaveValue('E-RG');
+    await expect(page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Posted Invoice Nos.' })).toHaveValue('E-RG+');
+});
 
-// // @allure.tag: regression
-// // @allure.tag: inventory
-// // @allure.tag: dev
-// test('Check Inventory Setup', async ({ page }, testInfo) => {
-//     testInfo.annotations.push({ type: 'description', description: 'Проверка настроек Inventory Setup' });
+// @allure.tag: regression
+// @allure.tag: inventory
+// @allure.tag: dev
+test('Check Inventory Setup', async ({ page }, testInfo) => {
+    testInfo.annotations.push({ type: 'description', description: 'Проверка настроек Inventory Setup' });
 
-//     await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
+    await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
 
-//     await SearchAndOpenPage(page, 'Inventory Setup');
-//     await page.waitForTimeout(10000);
+    await SearchAndOpenPage(page, 'Inventory Setup');
+    await page.waitForTimeout(10000);
 
-//     await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/Purchases_Setup.png');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/Purchases_Setup.png');
 
-//     await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'General, Show more' }).click();
-//     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Automatic Cost Adjustment')).toContainText('Always');
-//     await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Default Costing Method')).toContainText('FIFO');
-//     await expect(await (await page.locator('iframe[title="undefined"]').contentFrame()).getByRole('checkbox', { name: 'Location Mandatory' })).not.toBeChecked();
-// });
+    await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'General, Show more' }).click();
+    await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Automatic Cost Adjustment')).toContainText('Always');
+    await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Default Costing Method')).toContainText('FIFO');
+    await expect(await (await page.locator('iframe[title="undefined"]').contentFrame()).getByRole('checkbox', { name: 'Location Mandatory' })).not.toBeChecked();
+});
