@@ -1,179 +1,76 @@
 import { test, expect } from '@playwright/test';
-import { SearchAndOpenPage, RandInt, takeScreenshotAndAttach } from './bridge_functions';
+import * as allure from 'allure-js-commons';
+//import { SearchAndOpenPage, takeScreenshotAndAttach } from './bridge_functions';
+import { SearchAndOpenPage } from './bridge_functions';
 
-test.use({ 
-  video: 'on'
+test.use({ video: 'on' });
+
+// Основной сценарий Smoke Suite
+test('Smoke Suite: Проверка основных страниц BC', async ({ page }, testInfo) => {
+  // Описание и теги для отчёта Allure
+  await allure.description(
+    'Набор тестов для проверки ключевых страниц Business Central. ' +
+    'Включает создание клиента и проверку таблиц основных справочников и документов.'
+  );
+  allure.tag('regression');
+  allure.tag('dev');
+
+  // Шаг 1: Переход на домашнюю страницу (baseURL из конфига)
+  await test.step('Go to BC Home', async () => await page.goto(''));
+
+  // Шаг 2: Открытие справочника Customers и проверка таблицы
+  await test.step('Open Customers and check table', async () => {
+    await SearchAndOpenPage(page, 'Customers');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_customers_page.png');
+  });
+
+  // Шаг 3: Открытие справочника Vendors и проверка таблицы
+  await test.step('Open Vendors and check table', async () => {
+    await SearchAndOpenPage(page, 'Vendors');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_vendors_page.png');
+  });
+
+  // Шаг 4: Открытие справочника Items и проверка таблицы
+  await test.step('Open Items and check table', async () => {
+    await SearchAndOpenPage(page, 'Items');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_items_page.png');
+  });
+
+  // Шаг 5: Открытие Sales Orders и проверка таблицы
+  await test.step('Open Sales Orders and check table', async () => {
+    await SearchAndOpenPage(page, 'Sales Orders');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_sales_orders_page.png');
+  });
+
+  // Шаг 6: Открытие Purchase Orders и проверка таблицы
+  await test.step('Open Purchase Orders and check table', async () => {
+    await SearchAndOpenPage(page, 'Purchase Orders');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_purchase_orders_page.png');
+  });
+
+  // Шаг 7: Открытие Posted Sales Invoices и проверка таблицы
+  await test.step('Open Posted Sales Invoices and check table', async () => {
+    await SearchAndOpenPage(page, 'Posted Sales Invoices');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_posted_sales_invoices_page.png');
+  });
+
+  // Шаг 8: Открытие Posted Purchase Invoices и проверка таблицы
+  await test.step('Open Posted Purchase Invoices and check table', async () => {
+    await SearchAndOpenPage(page, 'Posted Purchase Invoices');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_posted_purchase_invoices_page.png');
+  });
+
+  // Шаг 9: Открытие Bank Accounts и проверка таблицы
+  await test.step('Open Bank Accounts and check table', async () => {
+    await SearchAndOpenPage(page, 'Bank Accounts');
+    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_bank_accounts_page.png');
+  });
 });
 
-// @allure.tag: regression
-// @allure.tag: sales
-// @allure.tag: dev
-test('Create new customer', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'description', description: 'Создание нового клиента и валидация полей.' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-
-  await SearchAndOpenPage(page, 'Customers');
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/before_new_customer.png');
-
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('menuitem', { name: 'New', exact: true }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Code, sorted in Ascending order NOAGR' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'OK' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Name' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Name' }).fill('Test Customer');
-
-  // await expect(page.locator('iframe[title="undefined"]').contentFrame().getByLabel('Agreement Posting')).toContainText('No AgreementMandatory');
-  
-  // const taxNumber = RandInt(100).toString();
-  // const taxOffice = RandInt(100).toString();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Invoicing, This group' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Number' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Number' }).fill(taxNumber);
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('textbox', { name: 'Tax Office' }).fill(taxOffice);
-
-  // await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_tax_info.png');
-
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Gen. Bus.' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Gen. Bus. Posting Group' }).fill('DOMEST');
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Gen. Bus. Posting Group' }).press('Tab');
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Choose a value for Customer Posting Group' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).fill('CUST_DOM');
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('combobox', { name: 'Customer Posting Group' }).press('Tab');
-  // await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_customer_creation.png');
-
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Delete the information' }).click();
-  // await page.locator('iframe[title="undefined"]').contentFrame().getByRole('button', { name: 'Yes' }).click();
-});
-
-// @allure.tag: regression
-// @allure.tag: sales
-// @allure.tag: dev
-test('Open Customers and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'sales' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Customers');
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_customers_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: purchasing
-// @allure.tag: dev
-test('Open Vendors and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'purchasing' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Vendors');
-  await page.waitForTimeout(2000);
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_vendors_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: Inventory
-// @allure.tag: dev
-test('Open Items and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'Inventory' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Items');
-  
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_items_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: sales
-// @allure.tag: dev
-test('Open Sales Orders and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'sales' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Sales Orders');
-  await page.waitForTimeout(2000);
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_sales_orders_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: purchasing
-// @allure.tag: dev
-test('Open Purchase Orders and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'purchasing' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Purchase Orders');
-  await page.waitForTimeout(2000);
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_purchase_orders_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: finance
-// @allure.tag: dev
-test('Open Chart of Accounts and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'finance' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await page.waitForTimeout(2000);
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_chart_of_accounts_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: sales
-// @allure.tag: dev
-test('Open Posted Sales Invoices and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'sales' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Posted Sales Invoices');
-  await page.waitForTimeout(2000);
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_posted_sales_invoices_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: purchasing
-// @allure.tag: dev
-test('Open Posted Purchase Invoices and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'purchasing' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Posted Purchase Invoices');
-  await page.waitForTimeout(2000);
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_posted_purchase_invoices_page.png');
-});
-
-// @allure.tag: regression
-// @allure.tag: finance
-// @allure.tag: dev
-test('Open Bank Accounts and check table', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'tag', description: 'regression' });
-  testInfo.annotations.push({ type: 'tag', description: 'finance' });
-  testInfo.annotations.push({ type: 'tag', description: 'dev' });
-
-  await page.goto('http://nav-buscent24w2:8080/BC252/?company=CRONUS%20AG');
-  await SearchAndOpenPage(page, 'Bank Accounts');
-
-  await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_bank_accounts_page.png');
-});
-
+export async function takeScreenshotAndAttach(page, testInfo, name, path) {
+  const buffer = await page.screenshot();
+  await test.info().attach(name, {
+    body: buffer,
+    contentType: 'image/png',
+  });
+}
