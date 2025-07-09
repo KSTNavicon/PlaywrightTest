@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import * as allure from 'allure-js-commons';
-//import { SearchAndOpenPage, takeScreenshotAndAttach } from './bridge_functions';
-import { SearchAndOpenPage } from './bridge_functions';
+import { SearchAndOpenPage, takeScreenshotAndAttach, takeScreenshotAndAttach2 } from './bridge_functions';
 
 test.use({ video: 'on' });
 
@@ -21,13 +20,13 @@ test('Smoke Suite: Проверка основных страниц BC', async (
   // Шаг 2: Открытие справочника Customers и проверка таблицы
   await test.step('Open Customers and check table', async () => {
     await SearchAndOpenPage(page, 'Customers');
-    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_customers_page.png');
+    await takeScreenshotAndAttach2(page, testInfo, 'screenshot', 'screenshots/after_open_customers_page.png');
   });
 
   // Шаг 3: Открытие справочника Vendors и проверка таблицы
   await test.step('Open Vendors and check table', async () => {
     await SearchAndOpenPage(page, 'Vendors');
-    await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_vendors_page.png');
+    await takeScreenshotAndAttach2(page, testInfo, 'screenshot', 'screenshots/after_open_vendors_page.png');
   });
 
   // Шаг 4: Открытие справочника Items и проверка таблицы
@@ -66,11 +65,3 @@ test('Smoke Suite: Проверка основных страниц BC', async (
     await takeScreenshotAndAttach(page, testInfo, 'screenshot', 'screenshots/after_open_bank_accounts_page.png');
   });
 });
-
-export async function takeScreenshotAndAttach(page, testInfo, name, path) {
-  const buffer = await page.screenshot();
-  await test.info().attach(name, {
-    body: buffer,
-    contentType: 'image/png',
-  });
-}
